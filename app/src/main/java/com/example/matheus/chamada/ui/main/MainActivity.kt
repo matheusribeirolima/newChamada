@@ -1,7 +1,8 @@
-package com.example.matheus.chamada
+package com.example.matheus.chamada.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.matheus.chamada.R
 
 class MainActivity : AppCompatActivity() {
 
