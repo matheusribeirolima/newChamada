@@ -1,4 +1,4 @@
-package com.example.matheus.chamada.data
+package com.example.matheus.chamada.data.service
 
 import retrofit2.Call
 import retrofit2.http.Body

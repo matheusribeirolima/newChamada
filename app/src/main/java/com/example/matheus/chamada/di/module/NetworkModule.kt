@@ -2,17 +2,19 @@ package com.example.matheus.chamada.di.module
 
 import android.app.Application
 import com.example.matheus.chamada.R
-import com.example.matheus.chamada.data.ChamadaApi
-import com.example.matheus.chamada.util.PreferencesHelper
-import com.example.matheus.chamada.util.ResourceManager
+import com.example.matheus.chamada.data.service.ChamadaApi
+import com.example.matheus.chamada.helper.PreferencesHelper
+import com.example.matheus.chamada.helper.ResourceManager
 import com.orhanobut.hawk.Hawk
 import dagger.Module
 import dagger.Provides
+import io.reactivex.schedulers.Schedulers
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
@@ -84,6 +86,7 @@ class NetworkModule {
             .baseUrl(resourceManager.getString(baseUrl))
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .build()
     }
 

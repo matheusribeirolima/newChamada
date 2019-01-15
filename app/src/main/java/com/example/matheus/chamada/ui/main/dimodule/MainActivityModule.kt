@@ -1,8 +1,8 @@
-package com.example.matheus.chamada.ui.main
+package com.example.matheus.chamada.ui.main.dimodule
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
-import com.example.matheus.chamada.ui.main.MainActivity
+import com.example.matheus.chamada.ui.main.activity.MainActivity
 import dagger.Module
 import dagger.Provides
 
