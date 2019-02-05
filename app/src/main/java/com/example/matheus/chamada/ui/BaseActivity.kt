@@ -23,8 +23,8 @@ import javax.inject.Inject
 abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatActivity(),
     HasSupportFragmentInjector {
 
-    internal val permissionsRequestCode = 0
-    internal lateinit var requestPermissionListener: RequestPermissionListener
+    private val permissionsRequestCode = 0
+    private lateinit var requestPermissionListener: RequestPermissionListener
 
     internal lateinit var binding: T
     internal lateinit var viewModel: V

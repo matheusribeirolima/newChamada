@@ -45,7 +45,7 @@ class ImageLoaderModule {
     }
 
     @Provides
-    @Reusable
+    @Singleton
     fun provideImageLoaderConfiguration(
         displayImageOptions: DisplayImageOptions,
         baseImageDecoder: BaseImageDecoder,
