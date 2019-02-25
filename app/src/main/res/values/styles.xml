@@ -6,7 +6,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/primaryText</item>
         <item name="android:actionMenuTextColor">@color/white</item>
-        <item name="android:fontFamily">@font/notosans_regular</item>
+        <item name="android:fontFamily">@font/noto_sans_regular</item>
     </style>
 
     <style name="SplashTheme" parent="AppTheme">

@@ -19,12 +19,12 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
-
 abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatActivity(),
     HasSupportFragmentInjector {
 
     private val permissionsRequestCode = 0
     private lateinit var requestPermissionListener: RequestPermissionListener
+    private lateinit var baseObserver: BaseObserver
 
     internal lateinit var binding: T
     internal lateinit var viewModel: V
@@ -49,43 +49,29 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatA
 
     abstract fun initBinding()
 
-    fun getBinding(): T {
-        return binding
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this, getLayoutId())
         viewModel = getViewModel()
+
+        binding = DataBindingUtil.setContentView(this, getLayoutId())
         binding.setVariable(getBindingVariable(), viewModel)
         binding.executePendingBindings()
 
-        viewModel.showLoading.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
-            override fun onPropertyChanged(sender: Observable, propertyId: Int) {
-                if (viewModel.showLoading.get()) {
-                    showLoading()
-                } else {
-                    hideLoading()
-                }
-            }
-        })
+        baseObserver = BaseObserver(viewModel.showLoading, viewModel.handleError)
+        baseObserver.observeChanges()
 
         initBinding()
+    }
+
+    fun getBinding(): T {
+        return binding
     }
 
     fun hideKeyboard() {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
-    }
-
-    fun showLoading() {
-//        LoadingDialog.getInstance().show(supportFragmentManager)
-    }
-
-    fun hideLoading() {
-//        LoadingDialog.getInstance().dismiss()
     }
 
     fun isNetworkConnected(): Boolean {

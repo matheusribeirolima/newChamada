@@ -21,6 +21,8 @@ import javax.inject.Inject
 abstract class BaseDialog<T : ViewDataBinding, V : BaseViewModel> : DialogFragment(), HasSupportFragmentInjector {
 
     private lateinit var baseActivity: BaseActivity<T, V>
+    private lateinit var baseObserver: BaseObserver
+
     internal lateinit var binding: T
     internal lateinit var viewModel: V
 
@@ -56,6 +58,9 @@ abstract class BaseDialog<T : ViewDataBinding, V : BaseViewModel> : DialogFragme
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = getViewModel()
+
+        baseObserver = BaseObserver(viewModel.showLoading, viewModel.handleError)
+        baseObserver.observeChanges()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -67,16 +72,6 @@ abstract class BaseDialog<T : ViewDataBinding, V : BaseViewModel> : DialogFragme
         super.onViewCreated(view, savedInstanceState)
         binding.setVariable(getBindingVariable(), viewModel)
         binding.executePendingBindings()
-
-        viewModel.showLoading.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
-            override fun onPropertyChanged(sender: Observable, propertyId: Int) {
-                if (viewModel.showLoading.get()) {
-                    baseActivity.showLoading()
-                } else {
-                    baseActivity.hideLoading()
-                }
-            }
-        })
 
         initBinding()
     }

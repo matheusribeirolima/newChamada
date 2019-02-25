@@ -2,7 +2,7 @@ package com.example.matheus.chamada.di.module
 
 import android.app.Application
 import com.example.matheus.chamada.R
-import com.example.matheus.chamada.data.service.ChamadaApi
+import com.example.matheus.chamada.data.source.ChamadaApi
 import com.example.matheus.chamada.helper.PreferencesHelper
 import com.example.matheus.chamada.helper.ResourceManager
 import com.orhanobut.hawk.Hawk

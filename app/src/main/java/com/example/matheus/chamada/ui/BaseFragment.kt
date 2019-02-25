@@ -19,6 +19,8 @@ import javax.inject.Inject
 abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : Fragment(), HasSupportFragmentInjector {
 
     private lateinit var baseActivity: BaseActivity<T, V>
+    private lateinit var baseObserver: BaseObserver
+
     internal lateinit var binding: T
     internal lateinit var viewModel: V
 
@@ -54,6 +56,9 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : Fragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = getViewModel()
+
+        baseObserver = BaseObserver(viewModel.showLoading, viewModel.handleError)
+        baseObserver.observeChanges()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -65,16 +70,6 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : Fragment()
         super.onViewCreated(view, savedInstanceState)
         binding.setVariable(getBindingVariable(), viewModel)
         binding.executePendingBindings()
-
-        viewModel.showLoading.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
-            override fun onPropertyChanged(sender: Observable, propertyId: Int) {
-                if (viewModel.showLoading.get()) {
-                    baseActivity.showLoading()
-                } else {
-                    baseActivity.hideLoading()
-                }
-            }
-        })
 
         initBinding()
     }
