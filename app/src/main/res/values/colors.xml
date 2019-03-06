@@ -3,9 +3,9 @@
     <color name="colorPrimary">#2196F3</color>
     <color name="colorPrimaryDark">#1976D2</color>
     <color name="colorAccent">#FFC107</color>
-    <color name="lightPrimaryColor">#BBDEFB</color>
-    <color name="primaryText">#212121</color>
-    <color name="secondaryText">#757575</color>
-    <color name="dividerColor">#BDBDBD</color>
-    <color name="white">#FFFFFF</color>
+    <color name="colorLight">#BBDEFB</color>
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#757575</color>
+    <color name="colorDivider">#BDBDBD</color>
+    <color name="colorWhite">#FFFFFF</color>
 </resources>

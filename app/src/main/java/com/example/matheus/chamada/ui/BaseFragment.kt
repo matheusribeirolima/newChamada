@@ -57,7 +57,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : Fragment()
         super.onCreate(savedInstanceState)
         viewModel = getViewModel()
 
-        baseObserver = BaseObserver(viewModel.showLoading, viewModel.handleError)
+        baseObserver = BaseObserver(viewModel.showLoading, viewModel.handleError, fragmentManager)
         baseObserver.observeChanges()
     }
 

@@ -59,7 +59,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatA
         binding.setVariable(getBindingVariable(), viewModel)
         binding.executePendingBindings()
 
-        baseObserver = BaseObserver(viewModel.showLoading, viewModel.handleError)
+        baseObserver = BaseObserver(viewModel.showLoading, viewModel.handleError, supportFragmentManager)
         baseObserver.observeChanges()
 
         initBinding()

@@ -7,8 +7,7 @@ import com.example.matheus.chamada.data.source.ChamadaRepository
 import com.example.matheus.chamada.ui.BaseViewModel
 import javax.inject.Inject
 
-
-class SplashViewModel @Inject constructor(private val repository: ChamadaRepository) : BaseViewModel() {
+class IntroViewModel @Inject constructor(private val repository: ChamadaRepository) : BaseViewModel() {
 
     val response = MutableLiveData<User>()
     private val login = ObservableField<String>("")

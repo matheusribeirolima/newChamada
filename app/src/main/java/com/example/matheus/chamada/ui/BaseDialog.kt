@@ -35,6 +35,8 @@ abstract class BaseDialog<T : ViewDataBinding, V : BaseViewModel> : DialogFragme
 
     abstract fun initBinding()
 
+    abstract fun getDialogTag() : String
+
     fun getBinding(): T {
         return binding
     }
@@ -59,7 +61,7 @@ abstract class BaseDialog<T : ViewDataBinding, V : BaseViewModel> : DialogFragme
         super.onCreate(savedInstanceState)
         viewModel = getViewModel()
 
-        baseObserver = BaseObserver(viewModel.showLoading, viewModel.handleError)
+        baseObserver = BaseObserver(viewModel.showLoading, viewModel.handleError, fragmentManager)
         baseObserver.observeChanges()
     }
 
@@ -84,10 +86,7 @@ abstract class BaseDialog<T : ViewDataBinding, V : BaseViewModel> : DialogFragme
         return baseActivity.isNetworkConnected()
     }
 
-    fun showOnce(fragmentManager: FragmentManager, tag: String) {
-        val transaction = fragmentManager.beginTransaction()
-        fragmentManager.findFragmentByTag(tag)?.let { transaction.remove(it) }
-        transaction.addToBackStack(null)
-        show(transaction, tag)
+    fun show(fragmentManager: FragmentManager) {
+        show(fragmentManager, getDialogTag())
     }
 }

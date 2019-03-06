@@ -3,13 +3,13 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="splashViewModel" type="com.example.matheus.chamada.ui.intro.viewmodel.SplashViewModel"/>
+        <variable name="introViewModel" type="com.example.matheus.chamada.ui.intro.viewmodel.IntroViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.intro.activity.SplashActivity">
+            tools:context=".ui.intro.activity.IntroActivity">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

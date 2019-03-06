@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Chamada</string>
     <string name="base_url">http://www.mocky.io/v2/</string>
+    <string name="attention">Atenção</string>
+    <string name="unexpected_error">Ops… Ocorreu um erro inesperado.\nTente novamente mais tarde.</string>
+    <string name="ok">OK</string>
+    <string name="ssession_error">Sessão expirada.\nFaça login novamente para entrar no app.</string>
 
 </resources>

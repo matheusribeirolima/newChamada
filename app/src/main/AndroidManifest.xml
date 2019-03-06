@@ -18,7 +18,7 @@
             android:supportsRtl="false"
             android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.intro.activity.SplashActivity"
+        <activity android:name=".ui.intro.activity.IntroActivity"
                   android:configChanges="orientation|keyboardHidden|screenSize"
                   android:screenOrientation="portrait"
                   android:theme="@style/SplashTheme">
