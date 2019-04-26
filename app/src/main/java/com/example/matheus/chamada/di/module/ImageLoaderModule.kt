@@ -9,7 +9,6 @@ import com.nostra13.universalimageloader.core.decode.BaseImageDecoder
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer
 import dagger.Module
 import dagger.Provides
-import dagger.Reusable
 import javax.inject.Singleton
 
 @Module

@@ -1,21 +1,20 @@
-package com.example.matheus.chamada.ui.intro.activity
+package com.example.matheus.chamada.ui.intro.fragment
 
 import androidx.lifecycle.ViewModelProviders
 import com.example.matheus.chamada.BR
 import com.example.matheus.chamada.R
-import com.example.matheus.chamada.databinding.ActivityIntroBinding
-import com.example.matheus.chamada.ui.BaseActivity
-import com.example.matheus.chamada.ui.intro.fragment.SplashFragment
+import com.example.matheus.chamada.databinding.FragmentLoginFingerprintBinding
+import com.example.matheus.chamada.ui.BaseFragment
 import com.example.matheus.chamada.ui.intro.viewmodel.IntroViewModel
 
-class IntroActivity : BaseActivity<ActivityIntroBinding, IntroViewModel>() {
+class LoginFingerprintFragment : BaseFragment<FragmentLoginFingerprintBinding, IntroViewModel>() {
 
     override fun getBindingVariable(): Int {
         return BR.introViewModel
     }
 
     override fun getLayoutId(): Int {
-        return R.layout.activity_intro
+        return R.layout.fragment_login_fingerprint
     }
 
     override fun getViewModel(): IntroViewModel {
@@ -25,8 +24,5 @@ class IntroActivity : BaseActivity<ActivityIntroBinding, IntroViewModel>() {
 
     override fun initBinding() {
         binding = getBinding()
-
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.flIntro, SplashFragment.newInstance(), SplashFragment.TAG)
     }
 }

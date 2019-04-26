@@ -2,10 +2,7 @@ package com.example.matheus.chamada.di.component
 
 import android.app.Application
 import com.example.matheus.chamada.ChamadaApplication
-import com.example.matheus.chamada.di.module.ActivityModule
-import com.example.matheus.chamada.di.module.AppModule
-import com.example.matheus.chamada.di.module.ImageLoaderModule
-import com.example.matheus.chamada.di.module.NetworkModule
+import com.example.matheus.chamada.di.module.*
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -16,10 +13,11 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,
-        AppModule::class,
         ActivityModule::class,
+        AppModule::class,
+        ImageLoaderModule::class,
         NetworkModule::class,
-        ImageLoaderModule::class]
+        ViewModelModule::class]
 )
 interface AppComponent : AndroidInjector<ChamadaApplication> {
 

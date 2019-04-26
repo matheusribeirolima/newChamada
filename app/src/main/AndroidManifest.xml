@@ -22,12 +22,6 @@
                   android:configChanges="orientation|keyboardHidden|screenSize"
                   android:screenOrientation="portrait"
                   android:theme="@style/SplashTheme">
-        </activity>
-
-        <activity
-                android:name=".ui.main.activity.MainActivity"
-                android:configChanges="orientation|keyboardHidden|screenSize"
-                android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW"/>
@@ -35,6 +29,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity
+                android:name=".ui.main.activity.MainActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:screenOrientation="portrait"/>
 
     </application>
 

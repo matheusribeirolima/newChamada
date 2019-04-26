@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import com.example.matheus.chamada.di.ApplicationContext
 import com.example.matheus.chamada.helper.ResourceManager
-import com.example.matheus.chamada.ui.BaseActivity
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
